@@ -60,6 +60,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *brightness_up[] = {"dwm-brightness", "up", NULL };
 static const char *brightness_down[] = {"dwm-brightness", "down", NULL };
+static const char *volume_up[] = {"amixer", "set", "Master", "5%+", NULL };
+static const char *volume_down[] = {"amixer", "set", "Master", "5%-", NULL };
+static const char *volume_mute[] = {"amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,6 +91,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
   { 0,                            0x1008ff02, spawn, {.v = brightness_up } },
   { 0,                            0x1008ff03, spawn, {.v = brightness_down } },
+  { 0,                            0x1008ff13, spawn, {.v = volume_up } },
+  { 0,                            0x1008ff11, spawn, {.v = volume_down } },
+  { 0,                            0x1008ff12, spawn, {.v = volume_mute } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
