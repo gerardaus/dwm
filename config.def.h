@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5"  };
+static const char *tags[] = { "code", "work", "chat", "misc", "system" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -33,7 +33,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -63,13 +62,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", "-e", "/bin/zsh", NULL };
-static const char *brightness_up[] = {"dwm-brightness", "up", NULL };
-static const char *brightness_down[] = {"dwm-brightness", "down", NULL };
-static const char *volume_up[] = {"amixer", "set", "Master", "5%+", NULL };
-static const char *volume_down[] = {"amixer", "set", "Master", "5%-", NULL };
-static const char *volume_mute[] = {"amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *brightness_up[] = {"dwm-bar-restart", "/usr/local/bin/dwm-brightness", "up", NULL };
+static const char *brightness_down[] = {"dwm-bar-restart", "dwm-brightness", "down", NULL };
+static const char *volume_up[] = {"dwm-bar-restart", "amixer", "set", "Master", "5%+", NULL };
+static const char *volume_down[] = {"dwm-bar-restart", "amixer", "set", "Master", "5%-", NULL };
+static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset", "Master", "toggle", NULL };
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL };
-static const char *screengrab_select[] = {"/usr/bin/screengrab-select", NULL};
+static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select", NULL};
+static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -117,6 +117,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_b,     spawn,          {.v = chromiumcmd } },
 	{ ControlMask,                  XK_Print, spawn,          {.v = screengrab_select } },
+	{ 0,                            XK_Print, spawn,          {.v = screengrab } },
+
 };
 
 /* button definitions */
