@@ -15,13 +15,29 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_yellow[]      = "#b58900";
 
-// solarized colors
+/* solarized colors http://ethanschoonover.com/solarized */
+static const char s_base03[]        = "#002b36";
+static const char s_base02[]        = "#073642";
+static const char s_base01[]        = "#586e75";
+static const char s_base00[]        = "#657b83";
+static const char s_base0[]         = "#839496";
+static const char s_base1[]         = "#93a1a1";
+static const char s_base2[]         = "#eee8d5";
+static const char s_base3[]         = "#fdf6e3";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_yellow  },
+	[SchemeNorm] = { s_base0, s_base03, s_base0 },
+	[SchemeSel]  = { s_base0, s_base02, s_base2  },
 };
+
+// solarized colors
+
+//static const char *colors[][3]      = {
+//	/*               fg         bg         border   */
+//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+//	[SchemeSel]  = { col_gray4, col_cyan,  col_yellow  },
+//};
 
 /* tagging */
 static const char *tags[] = { "code", "work", "chat", "misc", "system" };
@@ -70,6 +86,8 @@ static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset", "
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL };
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select", NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
+static const char *screenlock[] = {"/usr/local/bin/screen-lock", NULL};
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -118,7 +136,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,     spawn,          {.v = chromiumcmd } },
 	{ ControlMask,                  XK_Print, spawn,          {.v = screengrab_select } },
 	{ 0,                            XK_Print, spawn,          {.v = screengrab } },
-
+	{ MODKEY|ShiftMask,             XK_l,     spawn,          {.v = screenlock } },
 };
 
 /* button definitions */
