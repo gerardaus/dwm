@@ -12,6 +12,8 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
+static const char col_gray5[]       = "#545454";
+//static const char col_gray5[]       = "#707070";
 static const char col_cyan[]        = "#005577";
 static const char col_yellow[]      = "#b58900";
 
@@ -25,22 +27,29 @@ static const char s_base1[]         = "#93a1a1";
 static const char s_base2[]         = "#eee8d5";
 static const char s_base3[]         = "#fdf6e3";
 
+//static const char *colors[][3]      = {
+//	/*               fg         bg         border   */
+//	[SchemeNorm] = { s_base0, s_base03, s_base0 },
+//	[SchemeSel]  = { s_base0, s_base02, s_base2  },
+//};
+//
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { s_base0, s_base03, s_base0 },
-	[SchemeSel]  = { s_base0, s_base02, s_base2  },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray3, col_gray5, col_gray4 },
 };
+
 
 // solarized colors
 
-//static const char *colors[][3]      = {
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-//	[SchemeSel]  = { col_gray4, col_cyan,  col_yellow  },
+// static const char *colors[][3]      = {
+// 	/*               fg         bg         border   */
+// 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+// 	[SchemeSel]  = { col_gray4, col_cyan,  col_yellow  },
 //};
 
 /* tagging */
-static const char *tags[] = { "code", "work", "chat", "misc", "system" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -62,6 +71,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[D]",      deck },
  	{ "[@]",      spiral },
  	{ "[\\]",      dwindle },
 };
@@ -79,7 +89,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray4, "-sf", col_gray4, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", "-e", "/bin/zsh", NULL };
 static const char *brightness_up[] = {"dwm-bar-restart", "/usr/local/bin/dwm-brightness", "up", NULL };
 static const char *brightness_down[] = {"dwm-bar-restart", "dwm-brightness", "down", NULL };
@@ -109,6 +120,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
