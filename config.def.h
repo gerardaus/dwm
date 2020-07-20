@@ -6,8 +6,8 @@ static const unsigned int gappx = 15;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"monospace:size=10"};
-static const char dmenufont[] = "monospace:size=10";
+static const char *fonts[] = {"monospace:size=12"};
+static const char dmenufont[] = "monospace:size=12";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -16,6 +16,7 @@ static const char col_gray5[] = "#545454";
 // static const char col_gray5[]       = "#707070";
 static const char col_cyan[] = "#005577";
 static const char col_yellow[] = "#b58900";
+static const char col_white[] = "#ffffff";
 
 /* solarized colors http://ethanschoonover.com/solarized */
 static const char s_base03[] = "#002b36";
@@ -39,16 +40,22 @@ static const char s_base3[] = "#fdf6e3";
 //	[SchemeSel]  = { col_gray3, col_gray5, col_gray4 },
 //};
 
-// solarized colors
-
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_yellow},
+    [SchemeSel] = {col_gray4, col_gray1, col_white},
 };
 
+// solarized colors
+
+// static const char *colors[][3] = {
+//    /*               fg         bg         border   */
+//    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+//    [SchemeSel] = {col_gray4, col_cyan, col_yellow},
+//};
+
 /* tagging */
-static const char *tags[] = {"1", "2", "3", "4", "5", "6"};
+static const char *tags[] = {"terms", "2", "3", "4", "5", "6"};
 
 static const Rule rules[] = {
     /* xprop(1):
