@@ -55,7 +55,7 @@ static const char *colors[][3] = {
 //};
 
 /* tagging */
-static const char *tags[] = {"terms", "2", "3", "4", "5", "6"};
+static const char *tags[] = {"terms", "browser", "chat", "misc", "system"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -161,6 +161,7 @@ static Key keys[] = {
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
+    {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
 };
