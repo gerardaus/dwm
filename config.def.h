@@ -73,6 +73,8 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp", NULL, NULL, 0, 1, -1},
     {"floating", NULL, NULL, 0, 1, -1},
+    {"Pavu", NULL, NULL, 0, 1, -1},
+    {"Signal", NULL, NULL, 1 << 2, 0, -1},
 };
 
 /* layout(s) */
@@ -124,6 +126,7 @@ static const char *volume_down[] = {"dwm-bar-restart", "amixer", "set",
 static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset",
                                     "Master",          "toggle", NULL};
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL};
+static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *pavucontrolcmd[] = {"/usr/bin/pavucontrol", NULL};
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
@@ -170,6 +173,7 @@ static Key keys[] = {
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = signalcmd}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pavucontrolcmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
