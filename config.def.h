@@ -28,6 +28,8 @@ static const char s_base1[] = "#93a1a1";
 static const char s_base2[] = "#eee8d5";
 static const char s_base3[] = "#fdf6e3";
 
+static const char col_orange[] = "#ff8205";
+
 // static const char *colors[][3]      = {
 //	/*               fg         bg         border   */
 //	[SchemeNorm] = { s_base0, s_base03, s_base0 },
@@ -42,9 +44,15 @@ static const char s_base3[] = "#fdf6e3";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+    [SchemeNorm] = {col_orange, col_gray1, col_gray2},
     [SchemeSel] = {col_gray4, col_gray1, col_white},
 };
+
+// static const char *colors[][3] = {
+//    /*               fg         bg         border   */
+//    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+//    [SchemeSel] = {col_gray4, col_gray1, col_white},
+//};
 
 // solarized colors
 
@@ -64,6 +72,7 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp", NULL, NULL, 0, 1, -1},
+    {"floating", NULL, NULL, 0, 1, -1},
 };
 
 /* layout(s) */
@@ -115,6 +124,7 @@ static const char *volume_down[] = {"dwm-bar-restart", "amixer", "set",
 static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset",
                                     "Master",          "toggle", NULL};
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL};
+static const char *pavucontrolcmd[] = {"/usr/bin/pavucontrol", NULL};
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
@@ -160,6 +170,7 @@ static Key keys[] = {
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+    {MODKEY | ShiftMask, XK_p, spawn, {.v = pavucontrolcmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
