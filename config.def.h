@@ -74,6 +74,7 @@ static const Rule rules[] = {
     {"Gimp", NULL, NULL, 0, 1, -1},
     {"floating", NULL, NULL, 0, 1, -1},
     {"Pavu", NULL, NULL, 0, 1, -1},
+    {"Pulse Mixer", NULL, NULL, 0, 1, -1},
     {"Signal", NULL, NULL, 1 << 2, 0, -1},
 };
 
@@ -127,7 +128,8 @@ static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset",
                                     "Master",          "toggle", NULL};
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
-static const char *pavucontrolcmd[] = {"/usr/bin/pavucontrol", NULL};
+static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
+                                      NULL};
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
@@ -174,7 +176,7 @@ static Key keys[] = {
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = signalcmd}},
-    {MODKEY | ShiftMask, XK_p, spawn, {.v = pavucontrolcmd}},
+    {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
