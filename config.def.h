@@ -185,14 +185,14 @@ static Key keys[] = {
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
-    {MODKEY | ShiftMask, XK_s, spawn, {.v = signalcmd}},
+    {MODKEY | ShiftMask, XK_i, spawn, {.v = signalcmd}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_t, spawn, {.v = targetliberty}},
-    {MODKEY, XK_s, spawn, {.v = search}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
     {MODKEY | ShiftMask, XK_e, spawn, {.v = epj}},
 };
 
