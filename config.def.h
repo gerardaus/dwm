@@ -6,8 +6,8 @@ static const unsigned int gappx = 15;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"monospace:size=12"};
-static const char dmenufont[] = "monospace:size=12";
+static const char *fonts[] = {"Inconsolata for Powerline:size=18"};
+static const char dmenufont[] = "Inconsolata for Powerline:size=18";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -17,6 +17,7 @@ static const char col_gray5[] = "#545454";
 static const char col_cyan[] = "#005577";
 static const char col_yellow[] = "#b58900";
 static const char col_white[] = "#ffffff";
+static const char col_cyan2[] = "#02d9bc";
 
 /* solarized colors http://ethanschoonover.com/solarized */
 static const char s_base03[] = "#002b36";
@@ -44,7 +45,7 @@ static const char col_orange[] = "#ff8205";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_orange, col_gray1, col_gray2},
+    [SchemeNorm] = {col_cyan2, col_gray1, col_gray2},
     [SchemeSel] = {col_gray4, col_gray1, col_white},
 };
 
