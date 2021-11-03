@@ -136,15 +136,9 @@ static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 static const char *screenlock[] = {"/usr/local/bin/screen-lock", NULL};
 static const char *search[] = {"/usr/local/bin/dmenu-surf", NULL};
-static const char *targetliberty[] = {
-    "/usr/local/bin/surf",       "-g", "-z", "1.75",
-    "https://targetliberty.com", NULL};
-static const char *epj[] = {"/usr/local/bin/surf",
-                            "-g",
-                            "-z",
-                            "1.75",
-                            "https://economicpolicyjournal.com",
-                            NULL};
+static const char *notes[] = {
+    "st", "-c",           "floating",      "-g", "90x25+500+1",
+    "-e", "/usr/bin/vim", "/home/g/NOTES", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -192,9 +186,8 @@ static Key keys[] = {
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
-    {MODKEY | ShiftMask, XK_t, spawn, {.v = targetliberty}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
-    {MODKEY | ShiftMask, XK_e, spawn, {.v = epj}},
+    {MODKEY, XK_n, spawn, {.v = notes}},
 };
 
 /* button definitions */
