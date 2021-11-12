@@ -6,8 +6,8 @@ static const unsigned int gappx = 15;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"monospace:size=12"};
-static const char dmenufont[] = "monospace:size=12";
+static const char *fonts[] = {"monospace:size=18"};
+static const char dmenufont[] = "monospace:size=18";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -101,6 +101,7 @@ static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 static const char *screenlock[] = {"/usr/local/bin/screen-lock", NULL};
+static const char *notescmd[] = {"st", "-e", "vim", "/home/g/NOTES", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -113,6 +114,7 @@ static Key keys[] = {
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY, XK_n, spawn, {.v = notescmd}},
     {MODKEY, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
@@ -133,13 +135,16 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {0, 0x1008ff02, spawn, {.v = brightness_up}},
     {0, 0x1008ff03, spawn, {.v = brightness_down}},
-    {0, 0x1008ff13, spawn, {.v = volume_up}},
-    {0, 0x1008ff11, spawn, {.v = volume_down}},
+    {MODKEY, XK_Up, spawn, {.v = volume_up}},
+    {MODKEY, XK_Down, spawn, {.v = volume_down}},
+    //{0, 0x1008ff13, spawn, {.v = volume_up}},
+    //{0, 0x1008ff11, spawn, {.v = volume_down}},
     {0, 0x1008ff12, spawn, {.v = volume_mute}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {0, XK_Print, spawn, {.v = screengrab}},
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
