@@ -64,7 +64,8 @@ static const char *colors[][3] = {
 //};
 
 /* tagging */
-static const char *tags[] = {"terms", "browser", "chat", "misc", "system"};
+static const char *tags[] = {"terms",  "browser", "chat", "misc",
+                             "system", "t1",      "t2",   "t3"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -77,6 +78,9 @@ static const Rule rules[] = {
     {"Pavu", NULL, NULL, 0, 1, -1},
     {"Pulse Mixer", NULL, NULL, 0, 1, -1},
     {"Signal", NULL, NULL, 1 << 2, 0, -1},
+    {"trading1", NULL, NULL, 1 << 5, 0, -1},
+    {"trading2", NULL, NULL, 1 << 6, 0, -1},
+    {"trading3", NULL, NULL, 1 << 7, 0, -1},
 };
 
 /* layout(s) */
@@ -128,6 +132,7 @@ static const char *volume_down[] = {"dwm-bar-restart", "amixer", "set",
 static const char *volume_mute[] = {"dwm-bar-restart", "amixer", "-q", "sset",
                                     "Master",          "toggle", NULL};
 static const char *chromiumcmd[] = {"/usr/bin/chromium", NULL};
+static const char *firefoxcmd[] = {"/usr/bin/firefox", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
@@ -180,6 +185,7 @@ static Key keys[] = {
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+    {MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
     {MODKEY | ShiftMask, XK_i, spawn, {.v = signalcmd}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
