@@ -30,24 +30,11 @@ static const char s_base2[] = "#eee8d5";
 static const char s_base3[] = "#fdf6e3";
 
 static const char col_orange[] = "#ff8205";
-
-// static const char *colors[][3]      = {
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { s_base0, s_base03, s_base0 },
-//	[SchemeSel]  = { s_base0, s_base02, s_base2  },
-//};
-//
-// static const char *colors[][3]      = {
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-//	[SchemeSel]  = { col_gray3, col_gray5, col_gray4 },
-//};
-
-static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {col_cyan2, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_gray1, col_white},
-};
+// static const char *colors[][3] = {
+//     /*               fg         bg         border   */
+//     [SchemeNorm] = {col_cyan2, col_gray1, col_gray2},
+//     [SchemeSel] = {col_gray4, col_gray1, col_white},
+// };
 
 // static const char *colors[][3] = {
 //    /*               fg         bg         border   */
@@ -57,15 +44,14 @@ static const char *colors[][3] = {
 
 // solarized colors
 
-// static const char *colors[][3] = {
-//    /*               fg         bg         border   */
-//    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-//    [SchemeSel] = {col_gray4, col_cyan, col_yellow},
-//};
+static const char *colors[][3] = {
+    /*               fg         bg         border   */
+    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+    [SchemeSel] = {col_gray4, col_cyan, col_yellow},
+};
 
 /* tagging */
-static const char *tags[] = {"terms",  "browser", "chat", "misc",
-                             "system", "t1",      "t2",   "t3"};
+static const char *tags[] = {"1", "2", "3", "4", "5", "6"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -77,10 +63,8 @@ static const Rule rules[] = {
     {"floating", NULL, NULL, 0, 1, -1},
     {"Pavu", NULL, NULL, 0, 1, -1},
     {"Pulse Mixer", NULL, NULL, 0, 1, -1},
-    {"Signal", NULL, NULL, 1 << 2, 0, -1},
-    {"trading1", NULL, NULL, 1 << 5, 0, -1},
-    {"trading2", NULL, NULL, 1 << 6, 0, -1},
-    {"trading3", NULL, NULL, 1 << 7, 0, -1},
+    {"Signal", NULL, NULL, 1 << 3, 0, -1},
+    {"Slack", NULL, NULL, 1 << 3, 0, -1},
 };
 
 /* layout(s) */
@@ -94,7 +78,8 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     {"[]=", tile}, /* first entry is default */
     {"><>", NULL}, /* no layout function means floating behavior */
-    {"[M]", monocle}, {"[D]", deck}, {"[@]", spiral}, {"[\\]", dwindle},
+    {"[M]", monocle},  {"[D]", deck},           {"[@]", spiral},
+    {"[\\]", dwindle}, {"|M|", centeredmaster}, {">M>", centeredfloatingmaster},
 };
 
 /* key definitions */
@@ -144,6 +129,8 @@ static const char *search[] = {"/usr/local/bin/dmenu-surf", NULL};
 static const char *notes[] = {
     "st", "-c",           "floating",      "-g", "90x25+500+1",
     "-e", "/usr/bin/vim", "/home/g/NOTES", NULL};
+static const char *tasks[] = {"st",          "-c", "floating",      "-g",
+                              "90x25+500+1", "-e", "/usr/bin/task", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -162,7 +149,8 @@ static Key keys[] = {
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XK_c, setlayout, {.v = &layouts[3]}},
+    {MODKEY, XK_u, setlayout, {.v = &layouts[3]}},
+    {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_w, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
@@ -194,6 +182,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
     {MODKEY, XK_n, spawn, {.v = notes}},
+    {MODKEY | ShiftMask, XK_t, spawn, {.v = tasks}},
 };
 
 /* button definitions */
