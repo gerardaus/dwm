@@ -74,12 +74,14 @@ static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 
 #include "fibonacci.c"
+#include "grid.c"
 static const Layout layouts[] = {
     /* symbol     arrange function */
     {"[]=", tile}, /* first entry is default */
     {"><>", NULL}, /* no layout function means floating behavior */
     {"[M]", monocle},  {"[D]", deck},           {"[@]", spiral},
     {"[\\]", dwindle}, {"|M|", centeredmaster}, {">M>", centeredfloatingmaster},
+    {"HHH", grid},
 };
 
 /* key definitions */
@@ -124,13 +126,26 @@ static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
-static const char *screenlock[] = {"/usr/local/bin/screen-lock", NULL};
+static const char *screenlock[] = {"/usr/local/bin/slock", NULL};
+
+static const char *bookmarks[] = {"/home/g/.local/bin/bookmarks", "NULL"};
+static const char *gptclip[] = {"st",          "-c", "floating", "-g",
+                                "90x25+500+1", "-e", "gptclip",  NULL};
+static const char *gptmenu[] = {"/home/g/.local/bin/gptmenu", NULL};
+
+// static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
+// NULL};
 static const char *search[] = {"/usr/local/bin/dmenu-surf", NULL};
 static const char *notes[] = {
     "st", "-c",           "floating",      "-g", "90x25+500+1",
     "-e", "/usr/bin/vim", "/home/g/NOTES", NULL};
+static const char *commands[] = {
+    "st", "-c",           "floating",         "-g", "90x25+500+1",
+    "-e", "/usr/bin/vim", "/home/g/COMMANDS", NULL};
 static const char *tasks[] = {"st",          "-c", "floating",      "-g",
                               "90x25+500+1", "-e", "/usr/bin/task", NULL};
+
+/* key reference - https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h */
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -152,6 +167,7 @@ static Key keys[] = {
     {MODKEY, XK_u, setlayout, {.v = &layouts[3]}},
     {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_w, setlayout, {.v = &layouts[4]}},
+    {MODKEY, XK_g, setlayout, {.v = &layouts[8]}},
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY, XK_s, togglesticky, {0}},
@@ -182,7 +198,11 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
     {MODKEY, XK_n, spawn, {.v = notes}},
+    {MODKEY, XK_c, spawn, {.v = commands}},
     {MODKEY | ShiftMask, XK_t, spawn, {.v = tasks}},
+    {MODKEY, XK_Home, spawn, {.v = bookmarks}},
+    // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
+    {MODKEY, XK_bracketleft, spawn, {.v = gptmenu}},
 };
 
 /* button definitions */
