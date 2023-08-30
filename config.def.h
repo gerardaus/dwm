@@ -162,7 +162,7 @@ static const char *pronotes[] = {
     "-c",
     "floating",
     "-g",
-    "90x25+500+1",
+    "110x50+500+1",
     "-e",
     "/usr/bin/vim",
     "/home/g/notes/00.areas/00.professional/index.md",
