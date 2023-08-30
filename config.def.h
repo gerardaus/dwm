@@ -129,57 +129,79 @@ static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 static const char *screenlock[] = {"/usr/local/bin/slock", NULL};
 
 static const char *bookmarks[] = {"/home/g/.local/bin/bookmarks", "NULL"};
+static const char *snippits[] = {"st",
+                                 "-c",
+                                 "floating",
+                                 "-g",
+                                 "100x35+500+1",
+                                 "-e",
+                                 "/usr/bin/vim",
+                                 "/home/g/.local/share/snippets",
+                                 NULL};
+
 static const char *gptclip[] = {"st",          "-c", "floating", "-g",
                                 "90x25+500+1", "-e", "gptclip",  NULL};
 static const char *gptmenu[] = {"/home/g/.local/bin/gptmenu", NULL};
+static const char *notesmenu[] = {"/home/g/.local/bin/notesmenu", NULL};
 
 // static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
 // NULL};
 static const char *search[] = {"/usr/local/bin/dmenu-surf", NULL};
 static const char *notes[] = {
-    "st", "-c",           "floating",      "-g", "90x25+500+1",
-    "-e", "/usr/bin/vim", "/home/g/NOTES", NULL};
+    "st",          "-c", "floating",     "-g",
+    "90x25+500+1", "-e", "/usr/bin/vim", "/home/g/notes/NOTES",
+    NULL};
 static const char *commands[] = {
-    "st", "-c",           "floating",         "-g", "90x25+500+1",
-    "-e", "/usr/bin/vim", "/home/g/COMMANDS", NULL};
+    "st",          "-c", "floating",     "-g",
+    "90x25+500+1", "-e", "/usr/bin/vim", "/home/g/notes/COMMANDS",
+    NULL};
 static const char *tasks[] = {"st",          "-c", "floating",      "-g",
                               "90x25+500+1", "-e", "/usr/bin/task", NULL};
+static const char *pronotes[] = {
+    "st",
+    "-c",
+    "floating",
+    "-g",
+    "90x25+500+1",
+    "-e",
+    "/usr/bin/vim",
+    "/home/g/notes/00.areas/00.professional/index.md",
+    NULL};
 
 /* key reference - https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h */
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY, XK_p, spawn, {.v = dmenucmd}},
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_b, togglebar, {0}},
-    {MODKEY, XK_j, focusstack, {.i = +1}},
-    {MODKEY, XK_k, focusstack, {.i = -1}},
-    {MODKEY, XK_i, incnmaster, {.i = +1}},
-    {MODKEY, XK_d, incnmaster, {.i = -1}},
-    {MODKEY, XK_h, setmfact, {.f = -0.05}},
-    {MODKEY, XK_l, setmfact, {.f = +0.05}},
-    {MODKEY, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
-    {MODKEY | ShiftMask, XK_c, killclient, {0}},
-    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XK_u, setlayout, {.v = &layouts[3]}},
-    {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
-    {MODKEY, XK_w, setlayout, {.v = &layouts[4]}},
-    {MODKEY, XK_g, setlayout, {.v = &layouts[8]}},
+    {MODKEY, XK_Return, zoom, {0}},
     {MODKEY, XK_space, setlayout, {0}},
-    {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
-    {MODKEY, XK_s, togglesticky, {0}},
-    {MODKEY, XK_0, view, {.ui = ~0}},
-    {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY, XK_minus, setgaps, {.i = -1}},
     {MODKEY, XK_equal, setgaps, {.i = +1}},
-    {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
-    {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
-    {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY, XK_Home, spawn, {.v = bookmarks}},
+    {MODKEY, XK_bracketleft, spawn, {.v = gptmenu}},
+    {MODKEY, XK_0, view, {.ui = ~0}},
+    {MODKEY, XK_b, togglebar, {0}},
+    {MODKEY, XK_c, spawn, {.v = commands}},
+    {MODKEY, XK_d, incnmaster, {.i = -1}},
+    {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
+    {MODKEY, XK_g, setlayout, {.v = &layouts[8]}},
+    {MODKEY, XK_h, setmfact, {.f = -0.05}},
+    {MODKEY, XK_i, incnmaster, {.i = +1}},
+    {MODKEY, XK_j, focusstack, {.i = +1}},
+    {MODKEY, XK_k, focusstack, {.i = -1}},
+    {MODKEY, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+    {MODKEY, XK_n, spawn, {.v = notesmenu}},
+    {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
+    {MODKEY, XK_p, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_r, spawn, {.v = pronotes}},
+    {MODKEY, XK_s, togglesticky, {0}},
+    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
+    {MODKEY, XK_u, setlayout, {.v = &layouts[3]}},
+    {MODKEY, XK_w, setlayout, {.v = &layouts[4]}},
+
     {0, 0x1008ff02, spawn, {.v = brightness_up}},
     {0, 0x1008ff03, spawn, {.v = brightness_down}},
     {0, 0x1008ff13, spawn, {.v = volume_up}},
@@ -188,21 +210,28 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+
+    {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+    {MODKEY | ShiftMask, XK_c, killclient, {0}},
     {MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
     {MODKEY | ShiftMask, XK_i, spawn, {.v = signalcmd}},
+    {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
+    {MODKEY | ShiftMask, XK_t, spawn, {.v = tasks}},
+    {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
+    {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
+    {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+
+    {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
+
     {0, XK_Print, spawn, {.v = screengrab}},
-    {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
-    {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
-    {MODKEY, XK_n, spawn, {.v = notes}},
-    {MODKEY, XK_c, spawn, {.v = commands}},
-    {MODKEY | ShiftMask, XK_t, spawn, {.v = tasks}},
-    {MODKEY, XK_Home, spawn, {.v = bookmarks}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
-    {MODKEY, XK_bracketleft, spawn, {.v = gptmenu}},
 };
 
 /* button definitions */
