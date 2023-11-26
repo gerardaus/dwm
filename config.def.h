@@ -6,8 +6,8 @@ static const unsigned int gappx = 15;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"Inconsolata for Powerline:size=18"};
-static const char dmenufont[] = "Inconsolata for Powerline:size=18";
+static const char *fonts[] = {"Inconsolata for Powerline:size=22"};
+static const char dmenufont[] = "Inconsolata for Powerline:size=22";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -125,6 +125,9 @@ static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
+
+static const char *screengrab_paste[] = {
+    "/home/g/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 static const char *screenlock[] = {"/usr/local/bin/slock", NULL};
 
@@ -225,10 +228,13 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY | ShiftMask, XK_v, setlayout, {.v = &layouts[6]}},
+    {MODKEY | ShiftMask, XK_h, setlayout, {.v = &layouts[7]}},
 
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
+    {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
 
     {0, XK_Print, spawn, {.v = screengrab}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
