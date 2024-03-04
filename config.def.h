@@ -125,6 +125,8 @@ static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
 static const char *screengrab_select[] = {"/usr/local/bin/screengrab-select",
                                           NULL};
+static const char *screengrab_paste[] = {
+    "/home/g/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
 static const char *screengrab[] = {"/usr/local/bin/screengrab", NULL};
 static const char *screenlock[] = {"/usr/local/bin/slock", NULL};
 
@@ -229,6 +231,7 @@ static Key keys[] = {
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
+    {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
 
     {0, XK_Print, spawn, {.v = screengrab}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
