@@ -170,6 +170,8 @@ static const char *pronotes[] = {
     "/home/g/notes/00.areas/00.professional/index.md",
     NULL};
 
+static const char *dmenu_clipboard_llm_query[] = {"/home/g/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
+
 /* key reference - https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h */
 
 static Key keys[] = {
@@ -198,6 +200,7 @@ static Key keys[] = {
     {MODKEY, XK_n, spawn, {.v = notesmenu}},
     {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_q, spawn, {.v = dmenu_clipboard_llm_query}},
     {MODKEY, XK_r, spawn, {.v = pronotes}},
     {MODKEY, XK_s, togglesticky, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
@@ -227,11 +230,15 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY|ShiftMask,  XK_j,      pushdown,       {0} },
+    {MODKEY|ShiftMask,  XK_k,      pushup,         {0} },
 
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
+
+
 
     {0, XK_Print, spawn, {.v = screengrab}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
