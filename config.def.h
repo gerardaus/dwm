@@ -173,6 +173,8 @@ static const char *pronotes[] = {
     NULL};
 
 static const char *dmenu_clipboard_llm_query[] = {"/home/g/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 /* key reference - https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h */
 
@@ -186,6 +188,7 @@ static Key keys[] = {
     {MODKEY, XK_minus, setgaps, {.i = -1}},
     {MODKEY, XK_equal, setgaps, {.i = +1}},
     {MODKEY, XK_Home, spawn, {.v = bookmarks}},
+	  {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd } },
     {MODKEY, XK_bracketleft, spawn, {.v = gptmenu}},
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY, XK_b, togglebar, {0}},
