@@ -8,8 +8,10 @@ static const unsigned int gappx = 15;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"Inconsolata:size=16"};
-static const char dmenufont[] = "Inconsolata:size=16";
+static const char *fonts[] = {"monospace:size=16:style=Bold"};
+//static const char *fonts[] = {"Inconsolata:size=16"};
+static const char dmenufont[] = "monospace:size=16:style=Bold";
+// static const char dmenufont[] = "Inconsolata:size=16";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -106,6 +108,10 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf",
     col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+static const char *passmenucmd[] = {
+    "/usr/bin/passmenu", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf",
+    col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn",
 // dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf",
 // col_gray4, NULL };
@@ -119,7 +125,7 @@ static const char *volume_down[] = {"/home/g/.local/bin/dwm-bar-restart", "pamix
 static const char *volume_mute[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
 static const char *chromiumcmd[] = {"/home/g/.local/bin/browser", NULL};
 static const char *firefoxcmd[] = {"/home/g/.local/bin/browser", NULL};
-static const char *signalcmd[] = {"/home/g/.local/bin/signal-desktop", NULL};
+static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
@@ -150,7 +156,10 @@ static const char *searchnotes[] = {"/home/g/.local/bin/search-note-tags.sh", NU
 
 // static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
 // NULL};
-static const char *search[] = {"/usr/local/bin/dmenu-surf", NULL};
+static const char *surfersearch[] = {"/home/g/.local/bin/surfer-search", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+static const char *surfer[] = {"/home/g/.local/bin/surfer", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+
+static const char *search[] = {"/usr/local/bin/dmenu", NULL};
 static const char *notes[] = {
     "st",          "-c", "floating",     "-g",
     "90x25+500+1", "-e", "/usr/bin/vim", "/home/g/notes/NOTES",
@@ -191,9 +200,11 @@ static Key keys[] = {
 	  {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd } },
     {MODKEY, XK_bracketleft, spawn, {.v = gptmenu}},
     {MODKEY, XK_0, view, {.ui = ~0}},
+    {MODKEY, XK_a, spawn, {.v = passmenucmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_c, spawn, {.v = commands}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
+    {MODKEY, XK_e, setlayout, {.v = &layouts[7]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_g, setlayout, {.v = &layouts[8]}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
@@ -208,11 +219,11 @@ static Key keys[] = {
     {MODKEY, XK_q, spawn, {.v = dmenu_clipboard_llm_query}},
     // {MODKEY, XK_r, spawn, {.v = pronotes}},
 
-
     {MODKEY, XK_s, togglesticky, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_u, setlayout, {.v = &layouts[3]}},
     {MODKEY, XK_w, setlayout, {.v = &layouts[4]}},
+
 
     {0, XF86XK_MonBrightnessUp, spawn, {.v = brightness_up}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = brightness_down}},
@@ -232,7 +243,8 @@ static Key keys[] = {
 
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
-    {MODKEY | ShiftMask, XK_s, spawn, {.v = search}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = surfersearch}},
+    {MODKEY | ShiftMask, XK_u, spawn, {.v = surfer}},
 
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
