@@ -2270,24 +2270,16 @@ void centeredfloatingmaster(Monitor *m) {
     return;
 
   /* initialize nmaster area */
-  if (n > m->nmaster) {
-    /* go mfact box in the center if more than nmaster clients */
-    if (m->ww > m->wh) {
-      mw = m->nmaster ? m->ww * m->mfact : 0;
-      mh = m->nmaster ? m->wh * 0.9 : 0;
-    } else {
-      mh = m->nmaster ? m->wh * m->mfact : 0;
-      mw = m->nmaster ? m->ww * 0.9 : 0;
-    }
-    mx = mxo = (m->ww - mw) / 2;
-    my = myo = (m->wh - mh) / 2;
+  /* always center the master area, regardless of client count */
+  if (m->ww > m->wh) {
+    mw = m->nmaster ? m->ww * m->mfact : 0;
+    mh = m->nmaster ? m->wh * 0.9 : 0;
   } else {
-    /* go fullscreen if all clients are in the master area */
-    mh = m->wh;
-    mw = m->ww;
-    mx = mxo = 0;
-    my = myo = 0;
+    mh = m->nmaster ? m->wh * m->mfact : 0;
+    mw = m->nmaster ? m->ww * 0.9 : 0;
   }
+  mx = mxo = (m->ww - mw) / 2;
+  my = myo = (m->wh - mh) / 2;
 
   for (i = tx = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
     if (i < m->nmaster) {
