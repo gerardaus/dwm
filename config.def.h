@@ -69,6 +69,7 @@ static const Rule rules[] = {
     {"Pulse Mixer", NULL, NULL, 0, 1, -1},
     {"Signal", NULL, NULL, 1 << 3, 0, -1},
     {"Slack", NULL, NULL, 1 << 3, 0, -1},
+    {"satty", NULL, NULL, 0, 1, -1},
 };
 
 /* layout(s) */
@@ -128,7 +129,7 @@ static const char *volume_down[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "
 static const char *volume_mute[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
 static const char *chromiumcmd[] = {"~/.local/bin/browser", NULL};
 static const char *firefoxcmd[] = {"~/.local/bin/browser", NULL};
-static const char *shortcutscmd[] = {"~/.local/bin/browser", "--app=file://~/projects/suckless/dwm/dwm-shortcuts.html", NULL};
+static const char *shortcutscmd[] = {"~/.local/bin/browser", "--app=file:///home/g/projects/suckless/dwm/dwm-shortcuts.html", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
@@ -138,6 +139,8 @@ static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
 static const char *screengrab_paste[] = {
     "~/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
 static const char *screengrab[] = {"~/.local/bin/screengrab", NULL};
+static const char *screengrab_edit[] = {"~/.local/bin/screengrab-edit", NULL};
+static const char *screengrab_select_edit[] = {"~/.local/bin/screengrab-select-edit", NULL};
 static const char *screenlock[] = {"~/.local/bin/lock-screen", NULL};
 
 static const char *bookmarks[] = {"~/.local/bin/bookmarks", "NULL"};
@@ -267,8 +270,10 @@ static Key keys[] = {
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
     {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
-
-
+    
+    /* Screenshot with editing */
+    {ShiftMask, XK_Print, spawn, {.v = screengrab_edit}},
+    {ControlMask | ShiftMask, XK_Print, spawn, {.v = screengrab_select_edit}},
 
     {0, XK_Print, spawn, {.v = screengrab}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
