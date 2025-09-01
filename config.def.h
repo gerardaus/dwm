@@ -113,35 +113,27 @@ static const char *passmenucmd[] = {
     "/usr/bin/passmenu", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf",
     col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
 
-// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn",
-// dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf",
-// col_gray4, NULL };
 static const char *termcmd[] = {"st", "-e", "/bin/zsh", NULL};
-static const char *brightness_up[] = {
-    "~/.local/bin/dwm-bar-restart", "~/.local/bin/dwm-brightness", "up", NULL};
-static const char *brightness_down[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/dwm-brightness",
-                                        "down", NULL};
-
-static const char *min_brightness[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/min-brightness", NULL};
-static const char *max_brightness[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/max-brightness", NULL};
-static const char *volume_up[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-i", "5",    NULL};
-static const char *volume_down[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-d", "5",    NULL};
-static const char *volume_mute[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
-static const char *chromiumcmd[] = {"~/.local/bin/browser", NULL};
-static const char *firefoxcmd[] = {"~/.local/bin/browser", NULL};
+/* Audio/Video Controls */
+static const char *brightness_up[] = {"~/.local/bin/brightness", "up", NULL};
+static const char *brightness_down[] = {"~/.local/bin/brightness", "down", NULL};
+static const char *brightness_min[] = {"~/.local/bin/brightness", "min", NULL};
+static const char *brightness_max[] = {"~/.local/bin/brightness", "max", NULL};
+static const char *volume_up[] = {"~/.local/bin/audio", "volume", "+5", NULL};
+static const char *volume_down[] = {"~/.local/bin/audio", "volume", "-5", NULL};
+static const char *volume_mute[] = {"~/.local/bin/audio", "mute", NULL};
+static const char *browsercmd[] = {"~/.local/bin/browser", NULL};
 static const char *shortcutscmd[] = {"~/.local/bin/browser", "--app=file:///home/g/projects/suckless/dwm/dwm-shortcuts.html", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
 static const char *openwebuicmd[] = {"browser", "--app=http://openwebui:8080/", NULL};
-static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
-                                          NULL};
-static const char *screengrab_paste[] = {
-    "~/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
-static const char *screengrab[] = {"~/.local/bin/screengrab", NULL};
-static const char *screengrab_edit[] = {"~/.local/bin/screengrab-edit", NULL};
-static const char *screengrab_select_edit[] = {"~/.local/bin/screengrab-select-edit", NULL};
+static const char *screenshot_select[] = {"~/.local/bin/screenshot", "--select", NULL};
+static const char *screenshot_paste[] = {"~/.local/bin/screenshot", "--paste", NULL};
+static const char *screenshot_full[] = {"~/.local/bin/screenshot", "--full", NULL};
+static const char *screenshot_edit[] = {"~/.local/bin/screenshot", "--edit", NULL};
+static const char *screenshot_select_edit[] = {"~/.local/bin/screenshot", "--select", "--edit", NULL};
 static const char *screenlock[] = {"~/.local/bin/lock-screen", NULL};
 
 static const char *bookmarks[] = {"~/.local/bin/bookmarks", "NULL"};
@@ -160,32 +152,9 @@ static const char *gptclip[] = {"st",          "-c", "floating", "-g",
 static const char *gptmenu[] = {"~/.local/bin/gptmenu", NULL};
 static const char *notesedit[] = {"st", "-e", "nvim", "~/notes/NOTES", NULL};
 
-// static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
-// NULL};
 static const char *surfersearch[] = {"~/.local/bin/surfer-search", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
 static const char *surfer[] = {"~/.local/bin/surfer", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
 
-static const char *search[] = {"/usr/local/bin/dmenu", NULL};
-static const char *notes[] = {
-    "st",          "-c", "floating",     "-g",
-    "90x25+500+1", "-e", "/usr/bin/vim", "~/notes/NOTES",
-    NULL};
-static const char *commands[] = {
-    "st",          "-c", "floating",     "-g",
-    "90x25+500+1", "-e", "/usr/bin/vim", "~/notes/COMMANDS",
-    NULL};
-static const char *tasks[] = {"st",          "-c", "floating",      "-g",
-                              "90x25+500+1", "-e", "/usr/bin/task", NULL};
-static const char *pronotes[] = {
-    "st",
-    "-c",
-    "floating",
-    "-g",
-    "110x50+500+1",
-    "-e",
-    "/usr/bin/vim",
-    "~/notes/00.areas/00.professional/index.md",
-    NULL};
 
 static const char *dmenu_clipboard_llm_query[] = {"~/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
 static const char scratchpadname[] = "scratchpad";
@@ -208,7 +177,7 @@ static Key keys[] = {
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY, XK_a, spawn, {.v = passmenucmd}},
     {MODKEY, XK_b, togglebar, {0}},
-    {MODKEY, XK_c, spawn, {.v = commands}},
+    {MODKEY, XK_c, spawn, {.v = notesedit}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_e, setlayout, {.v = &layouts[7]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
@@ -223,7 +192,6 @@ static Key keys[] = {
     {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_q, spawn, {.v = dmenu_clipboard_llm_query}},
-    // {MODKEY, XK_r, spawn, {.v = pronotes}},
 
     {MODKEY, XK_s, togglesticky, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
@@ -236,16 +204,16 @@ static Key keys[] = {
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volume_up}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = volume_down}},
     {0, XF86XK_AudioMute, spawn, {.v = volume_mute}},
-    {0, XK_F5, spawn, {.v = min_brightness}},
-    {0, XK_F6, spawn, {.v = max_brightness}},
+    {0, XK_F5, spawn, {.v = brightness_min}},
+    {0, XK_F6, spawn, {.v = brightness_max}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
 
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
-    {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
+    {MODKEY | ShiftMask, XK_b, spawn, {.v = browsercmd}},
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
-    {MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
+    {MODKEY | ShiftMask, XK_f, spawn, {.v = browsercmd}},
     {MODKEY | ShiftMask, XK_h, spawn, {.v = shortcutscmd}},
     {MODKEY | ShiftMask, XK_i, spawn, {.v = signalcmd}},
     {MODKEY | ShiftMask, XK_r, spawn, {.v = slackcmd}},
@@ -265,15 +233,15 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_k,      pushup,         {0} },
 
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
-    {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
-    {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
-    {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
+    {ControlMask, XK_Print, spawn, {.v = screenshot_select}},
+    {ControlMask | ShiftMask, XK_p, spawn, {.v = screenshot_select}},
+    {ControlMask | ShiftMask, XK_o, spawn, {.v = screenshot_paste}},
     
     /* Screenshot with editing */
-    {ShiftMask, XK_Print, spawn, {.v = screengrab_edit}},
-    {ControlMask | ShiftMask, XK_Print, spawn, {.v = screengrab_select_edit}},
+    {ShiftMask, XK_Print, spawn, {.v = screenshot_edit}},
+    {ControlMask | ShiftMask, XK_Print, spawn, {.v = screenshot_select_edit}},
 
-    {0, XK_Print, spawn, {.v = screengrab}},
+    {0, XK_Print, spawn, {.v = screenshot_full}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
 };
 
