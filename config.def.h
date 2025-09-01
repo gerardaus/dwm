@@ -120,11 +120,15 @@ static const char *brightness_up[] = {
     "/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/dwm-brightness", "up", NULL};
 static const char *brightness_down[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/dwm-brightness",
                                         "down", NULL};
+
+static const char *min_brightness[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/min-brightness", NULL};
+static const char *max_brightness[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/max-brightness", NULL};
 static const char *volume_up[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-i", "5",    NULL};
 static const char *volume_down[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-d", "5",    NULL};
 static const char *volume_mute[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
 static const char *chromiumcmd[] = {"/home/g/.local/bin/browser", NULL};
 static const char *firefoxcmd[] = {"/home/g/.local/bin/browser", NULL};
+static const char *shortcutscmd[] = {"/home/g/.local/bin/browser", "--app=file:///home/g/projects/suckless/dwm/dwm-shortcuts.html", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
@@ -230,6 +234,8 @@ static Key keys[] = {
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volume_up}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = volume_down}},
     {0, XF86XK_AudioMute, spawn, {.v = volume_mute}},
+    {0, XK_F5, spawn, {.v = min_brightness}},
+    {0, XK_F6, spawn, {.v = max_brightness}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
@@ -238,6 +244,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_b, spawn, {.v = chromiumcmd}},
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
     {MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
+    {MODKEY | ShiftMask, XK_h, spawn, {.v = shortcutscmd}},
     {MODKEY | ShiftMask, XK_i, spawn, {.v = signalcmd}},
     {MODKEY | ShiftMask, XK_r, spawn, {.v = slackcmd}},
 

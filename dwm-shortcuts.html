@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWM Keyboard Shortcuts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #eeeeee;
+            background: #222222;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #ffffff;
+            border-bottom: 4px solid #ffffff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #02d9bc;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 4px solid #02d9bc;
+            padding-left: 10px;
+        }
+        
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .shortcut-category {
+            background: #2a2a2a;
+            border: 1px solid #444444;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .shortcut-category h3 {
+            color: #b58900;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #444444;
+        }
+        
+        .shortcut-item:last-child {
+            border-bottom: none;
+        }
+        
+        .key-combo {
+            background: #444444;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .description {
+            color: #bbbbbb;
+            flex: 1;
+            margin-left: 15px;
+        }
+        
+        .legend {
+            background: #2a2a2a;
+            border: 2px solid #02d9bc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .legend h3 {
+            color: #02d9bc;
+            margin-bottom: 10px;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .legend-key {
+            background: #444444;
+            color: #ffffff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .shortcuts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DWM Keyboard Shortcuts</h1>
+        
+        <div class="legend">
+            <h3>Key Legend</h3>
+            <div class="legend-item"><span class="legend-key">Alt</span> = Mod key (Mod1Mask)</div>
+            <div class="legend-item"><span class="legend-key">Shift</span> = Shift key</div>
+            <div class="legend-item"><span class="legend-key">Ctrl</span> = Control key</div>
+        </div>
+
+        <h2>Window Management</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Focus & Navigation</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + j</span>
+                    <span class="description">Focus next window</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + k</span>
+                    <span class="description">Focus previous window</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Tab</span>
+                    <span class="description">Toggle to last viewed tag</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Return</span>
+                    <span class="description">Zoom (swap master)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + j</span>
+                    <span class="description">Push window down in stack</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + k</span>
+                    <span class="description">Push window up in stack</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Window Control</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + c</span>
+                    <span class="description">Kill focused window</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + Space</span>
+                    <span class="description">Toggle floating</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + s</span>
+                    <span class="description">Toggle sticky (visible on all tags)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + b</span>
+                    <span class="description">Toggle status bar</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + q</span>
+                    <span class="description">Quit DWM</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Master Area</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + h</span>
+                    <span class="description">Decrease master width</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + l</span>
+                    <span class="description">Increase master width</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + i</span>
+                    <span class="description">Increase master windows</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + d</span>
+                    <span class="description">Decrease master windows</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Gaps</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + -</span>
+                    <span class="description">Decrease gaps</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + =</span>
+                    <span class="description">Increase gaps</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + =</span>
+                    <span class="description">Reset gaps to 0</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Layouts</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Layout Switching</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + t</span>
+                    <span class="description">[]=  Tiled layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + f</span>
+                    <span class="description">><>  Floating layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + m</span>
+                    <span class="description">[M]  Monocle layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + u</span>
+                    <span class="description">[D]  Deck layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + o</span>
+                    <span class="description">[@]  Spiral layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + w</span>
+                    <span class="description">[@]  Spiral layout (duplicate)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + e</span>
+                    <span class="description">|M|  Centered master</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + g</span>
+                    <span class="description">HHH  Grid layout</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Space</span>
+                    <span class="description">Toggle between layouts</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Tags/Workspaces</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Tag Navigation</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + 1-6</span>
+                    <span class="description">View tag 1-6</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + 0</span>
+                    <span class="description">View all tags</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Ctrl + 1-6</span>
+                    <span class="description">Toggle view tag 1-6</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + 1-6</span>
+                    <span class="description">Move window to tag 1-6</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + 0</span>
+                    <span class="description">Tag window on all tags</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Ctrl + Shift + 1-6</span>
+                    <span class="description">Toggle window tag 1-6</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Monitor Control</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + ,</span>
+                    <span class="description">Focus previous monitor</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + .</span>
+                    <span class="description">Focus next monitor</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + ,</span>
+                    <span class="description">Move window to prev monitor</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + .</span>
+                    <span class="description">Move window to next monitor</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Application Launchers</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Core Applications</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + Return</span>
+                    <span class="description">Open terminal (st)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + p</span>
+                    <span class="description">Run dmenu launcher</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + a</span>
+                    <span class="description">Password menu</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + `</span>
+                    <span class="description">Toggle scratchpad</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Browsers & Communication</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + b</span>
+                    <span class="description">Open browser</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + f</span>
+                    <span class="description">Open Firefox</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + i</span>
+                    <span class="description">Open Signal</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + r</span>
+                    <span class="description">Open Slack</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + s</span>
+                    <span class="description">Surfer search</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + u</span>
+                    <span class="description">Surfer browser</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Notes & Productivity</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + n</span>
+                    <span class="description">Notes menu</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + v</span>
+                    <span class="description">New note</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + t</span>
+                    <span class="description">Search notes</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + c</span>
+                    <span class="description">Commands reference</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Home</span>
+                    <span class="description">Bookmarks</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Ctrl + Shift + Home</span>
+                    <span class="description">Snippets</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>AI & Utilities</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + [</span>
+                    <span class="description">GPT menu</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + q</span>
+                    <span class="description">Clipboard LLM query</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + p</span>
+                    <span class="description">Pulse audio mixer</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Shift + l</span>
+                    <span class="description">Lock screen</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Media & System Controls</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Volume Control</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">XF86AudioRaiseVolume</span>
+                    <span class="description">Volume up (+5)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">XF86AudioLowerVolume</span>
+                    <span class="description">Volume down (-5)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">XF86AudioMute</span>
+                    <span class="description">Toggle mute</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Brightness Control</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">XF86MonBrightnessUp</span>
+                    <span class="description">Brightness up</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">XF86MonBrightnessDown</span>
+                    <span class="description">Brightness down</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">F5</span>
+                    <span class="description">Minimum brightness</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">F6</span>
+                    <span class="description">Maximum brightness</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Screenshots</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Print</span>
+                    <span class="description">Full screenshot</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Ctrl + Print</span>
+                    <span class="description">Select area screenshot</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Ctrl + Shift + p</span>
+                    <span class="description">Select area screenshot</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Ctrl + Shift + o</span>
+                    <span class="description">Screenshot & copy filename</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Mouse Bindings</h2>
+        <div class="shortcuts-grid">
+            <div class="shortcut-category">
+                <h3>Layout Bar</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Left Click on Layout</span>
+                    <span class="description">Cycle through layouts</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Right Click on Layout</span>
+                    <span class="description">Set monocle layout</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Window Title & Status</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Middle Click on Title</span>
+                    <span class="description">Zoom window</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Middle Click on Status</span>
+                    <span class="description">Open terminal</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Window Manipulation</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Left Click</span>
+                    <span class="description">Move window (drag)</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Middle Click</span>
+                    <span class="description">Toggle floating</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Right Click</span>
+                    <span class="description">Resize window (drag)</span>
+                </div>
+            </div>
+
+            <div class="shortcut-category">
+                <h3>Tag Bar</h3>
+                <div class="shortcut-item">
+                    <span class="key-combo">Left Click on Tag</span>
+                    <span class="description">View tag</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Right Click on Tag</span>
+                    <span class="description">Toggle view tag</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Left Click on Tag</span>
+                    <span class="description">Move window to tag</span>
+                </div>
+                <div class="shortcut-item">
+                    <span class="key-combo">Alt + Right Click on Tag</span>
+                    <span class="description">Toggle window on tag</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
