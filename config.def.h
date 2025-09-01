@@ -134,6 +134,7 @@ static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
+static const char *openwebuicmd[] = {"browser", "--app=http://openwebui:8080/", NULL};
 static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab_paste[] = {
@@ -157,9 +158,7 @@ static const char *snippits[] = {"st",
 static const char *gptclip[] = {"st",          "-c", "floating", "-g",
                                 "90x25+500+1", "-e", "gptclip",  NULL};
 static const char *gptmenu[] = {"~/.local/bin/gptmenu", NULL};
-static const char *notesmenu[] = {"~/.local/bin/notesmenu", NULL};
-static const char *newnote[] = {"~/.local/bin/new-note.sh", NULL};
-static const char *searchnotes[] = {"~/.local/bin/search-note-tags.sh", NULL};
+static const char *notesedit[] = {"st", "-e", "nvim", "~/notes/NOTES", NULL};
 
 // static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
 // NULL};
@@ -220,7 +219,7 @@ static Key keys[] = {
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XK_n, spawn, {.v = notesmenu}},
+    {MODKEY, XK_n, spawn, {.v = notesedit}},
     {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_q, spawn, {.v = dmenu_clipboard_llm_query}},
@@ -253,6 +252,7 @@ static Key keys[] = {
 
     {MODKEY | ShiftMask, XK_l, spawn, {.v = screenlock}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = pulsemixercmd}},
+    {MODKEY | ShiftMask, XK_o, spawn, {.v = openwebuicmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = surfersearch}},
     {MODKEY | ShiftMask, XK_u, spawn, {.v = surfer}},
 
@@ -263,8 +263,6 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
     {MODKEY | ShiftMask, XK_j,      pushdown,       {0} },
     {MODKEY | ShiftMask, XK_k,      pushup,         {0} },
-    {MODKEY | ShiftMask, XK_v, spawn, {.v = newnote}},
-    {MODKEY | ShiftMask, XK_t, spawn, {.v = searchnotes}},
 
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
     {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
