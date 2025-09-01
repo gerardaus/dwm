@@ -1731,8 +1731,27 @@ void spawn(const Arg *arg) {
     if (dpy)
       close(ConnectionNumber(dpy));
     setsid();
-    execvp(((char **)arg->v)[0], (char **)arg->v);
-    fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
+    
+    /* Expand ~ to $HOME in command arguments */
+    char **original_argv = (char **)arg->v;
+    char *expanded_argv[256];
+    char *home = getenv("HOME");
+    int i;
+    
+    for (i = 0; original_argv[i] && i < 255; i++) {
+      if (home && original_argv[i][0] == '~' && original_argv[i][1] == '/') {
+        /* Allocate memory for expanded path */
+        size_t len = strlen(home) + strlen(original_argv[i]);
+        expanded_argv[i] = ecalloc(len, sizeof(char));
+        sprintf(expanded_argv[i], "%s%s", home, original_argv[i] + 1);
+      } else {
+        expanded_argv[i] = original_argv[i];
+      }
+    }
+    expanded_argv[i] = NULL;
+    
+    execvp(expanded_argv[0], expanded_argv);
+    fprintf(stderr, "dwm: execvp %s", expanded_argv[0]);
     perror(" failed");
     exit(EXIT_SUCCESS);
   }

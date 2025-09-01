@@ -117,30 +117,30 @@ static const char *passmenucmd[] = {
 // col_gray4, NULL };
 static const char *termcmd[] = {"st", "-e", "/bin/zsh", NULL};
 static const char *brightness_up[] = {
-    "/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/dwm-brightness", "up", NULL};
-static const char *brightness_down[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/dwm-brightness",
+    "~/.local/bin/dwm-bar-restart", "~/.local/bin/dwm-brightness", "up", NULL};
+static const char *brightness_down[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/dwm-brightness",
                                         "down", NULL};
 
-static const char *min_brightness[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/min-brightness", NULL};
-static const char *max_brightness[] = {"/home/g/.local/bin/dwm-bar-restart", "/home/g/.local/bin/max-brightness", NULL};
-static const char *volume_up[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-i", "5",    NULL};
-static const char *volume_down[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-d", "5",    NULL};
-static const char *volume_mute[] = {"/home/g/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
-static const char *chromiumcmd[] = {"/home/g/.local/bin/browser", NULL};
-static const char *firefoxcmd[] = {"/home/g/.local/bin/browser", NULL};
-static const char *shortcutscmd[] = {"/home/g/.local/bin/browser", "--app=file:///home/g/projects/suckless/dwm/dwm-shortcuts.html", NULL};
+static const char *min_brightness[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/min-brightness", NULL};
+static const char *max_brightness[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/max-brightness", NULL};
+static const char *volume_up[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-i", "5",    NULL};
+static const char *volume_down[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-d", "5",    NULL};
+static const char *volume_mute[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
+static const char *chromiumcmd[] = {"~/.local/bin/browser", NULL};
+static const char *firefoxcmd[] = {"~/.local/bin/browser", NULL};
+static const char *shortcutscmd[] = {"~/.local/bin/browser", "--app=file://~/projects/suckless/dwm/dwm-shortcuts.html", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
 static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
-static const char *screengrab_select[] = {"/home/g/.local/bin/screengrab-select",
+static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab_paste[] = {
-    "/home/g/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
-static const char *screengrab[] = {"/home/g/.local/bin/screengrab", NULL};
-static const char *screenlock[] = {"/home/g/.local/bin/lock-screen", NULL};
+    "~/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
+static const char *screengrab[] = {"~/.local/bin/screengrab", NULL};
+static const char *screenlock[] = {"~/.local/bin/lock-screen", NULL};
 
-static const char *bookmarks[] = {"/home/g/.local/bin/bookmarks", "NULL"};
+static const char *bookmarks[] = {"~/.local/bin/bookmarks", "NULL"};
 static const char *snippits[] = {"st",
                                  "-c",
                                  "floating",
@@ -148,29 +148,29 @@ static const char *snippits[] = {"st",
                                  "100x35+500+1",
                                  "-e",
                                  "/usr/bin/vim",
-                                 "/home/g/.local/share/snippets",
+                                 "~/.local/share/snippets",
                                  NULL};
 
 static const char *gptclip[] = {"st",          "-c", "floating", "-g",
                                 "90x25+500+1", "-e", "gptclip",  NULL};
-static const char *gptmenu[] = {"/home/g/.local/bin/gptmenu", NULL};
-static const char *notesmenu[] = {"/home/g/.local/bin/notesmenu", NULL};
-static const char *newnote[] = {"/home/g/.local/bin/new-note.sh", NULL};
-static const char *searchnotes[] = {"/home/g/.local/bin/search-note-tags.sh", NULL};
+static const char *gptmenu[] = {"~/.local/bin/gptmenu", NULL};
+static const char *notesmenu[] = {"~/.local/bin/notesmenu", NULL};
+static const char *newnote[] = {"~/.local/bin/new-note.sh", NULL};
+static const char *searchnotes[] = {"~/.local/bin/search-note-tags.sh", NULL};
 
 // static const char *screenlock[] = {"/usr/local/bin/slock", "-mode", "blank",
 // NULL};
-static const char *surfersearch[] = {"/home/g/.local/bin/surfer-search", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
-static const char *surfer[] = {"/home/g/.local/bin/surfer", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+static const char *surfersearch[] = {"~/.local/bin/surfer-search", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
+static const char *surfer[] = {"~/.local/bin/surfer", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4,   "-sb", col_gray4, "-sf", col_gray5, NULL};
 
 static const char *search[] = {"/usr/local/bin/dmenu", NULL};
 static const char *notes[] = {
     "st",          "-c", "floating",     "-g",
-    "90x25+500+1", "-e", "/usr/bin/vim", "/home/g/notes/NOTES",
+    "90x25+500+1", "-e", "/usr/bin/vim", "~/notes/NOTES",
     NULL};
 static const char *commands[] = {
     "st",          "-c", "floating",     "-g",
-    "90x25+500+1", "-e", "/usr/bin/vim", "/home/g/notes/COMMANDS",
+    "90x25+500+1", "-e", "/usr/bin/vim", "~/notes/COMMANDS",
     NULL};
 static const char *tasks[] = {"st",          "-c", "floating",      "-g",
                               "90x25+500+1", "-e", "/usr/bin/task", NULL};
@@ -182,10 +182,10 @@ static const char *pronotes[] = {
     "110x50+500+1",
     "-e",
     "/usr/bin/vim",
-    "/home/g/notes/00.areas/00.professional/index.md",
+    "~/notes/00.areas/00.professional/index.md",
     NULL};
 
-static const char *dmenu_clipboard_llm_query[] = {"/home/g/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
+static const char *dmenu_clipboard_llm_query[] = {"~/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
