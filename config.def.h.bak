@@ -13,12 +13,12 @@ static const char *fonts[] = {"monospace:size=16:style=Bold"};
 static const char dmenufont[] = "monospace:size=16:style=Bold";
 // static const char dmenufont[] = "Inconsolata:size=16";
 /* Theme colors - semantic names for easy theme switching */
-static const char normal_bg[]     = "#1a1b26";  /* Normal window background */
-static const char normal_fg[]     = "#c0caf5";  /* Normal window foreground */
-static const char normal_border[] = "#414868";  /* Normal window border */
-static const char select_bg[]     = "#24283b";  /* Selected window background */
-static const char select_fg[]     = "#ffffff";  /* Selected window foreground */
-static const char select_border[] = "#7aa2f7";  /* Selected window border */
+static const char normal_bg[]     = "#282828";  /* Normal window background */
+static const char normal_fg[]     = "#ebdbb2";  /* Normal window foreground */
+static const char normal_border[] = "#504945";  /* Normal window border */
+static const char select_bg[]     = "#3c3836";  /* Selected window background */
+static const char select_fg[]     = "#fbf1c7";  /* Selected window foreground */
+static const char select_border[] = "#d79921";  /* Selected window border */
 
 /* Legacy color definitions - keep for compatibility with other tools */
 static const char col_yellow[] = "#b58900";
@@ -116,13 +116,13 @@ static const char *passmenucmd[] = {
 
 static const char *termcmd[] = {"st", "-e", "/bin/zsh", NULL};
 /* Audio/Video Controls */
-static const char *brightness_up[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "up", NULL};
-static const char *brightness_down[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "down", NULL};
-static const char *brightness_min[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "min", NULL};
-static const char *brightness_max[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "max", NULL};
-static const char *volume_up[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-i", "5", NULL};
-static const char *volume_down[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-d", "5", NULL};
-static const char *volume_mute[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
+static const char *brightness_up[] = {"~/.local/bin/brightness", "up", NULL};
+static const char *brightness_down[] = {"~/.local/bin/brightness", "down", NULL};
+static const char *brightness_min[] = {"~/.local/bin/brightness", "min", NULL};
+static const char *brightness_max[] = {"~/.local/bin/brightness", "max", NULL};
+static const char *volume_up[] = {"~/.local/bin/audio", "volume", "+5", NULL};
+static const char *volume_down[] = {"~/.local/bin/audio", "volume", "-5", NULL};
+static const char *volume_mute[] = {"~/.local/bin/audio", "mute", NULL};
 static const char *browsercmd[] = {"~/.local/bin/browser", NULL};
 static const char *shortcutscmd[] = {"~/.local/bin/browser", "--app=file:///home/g/projects/suckless/dwm/dwm-shortcuts.html", NULL};
 static const char *signalcmd[] = {"/usr/bin/signal-desktop", NULL};
@@ -130,13 +130,11 @@ static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
 static const char *openwebuicmd[] = {"browser", "--app=http://openwebui:8080/", NULL};
-static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
-                                          NULL};
-static const char *screengrab_paste[] = {
-    "~/.local/bin/screen_select_with_filename_in_buffer.sh", NULL};
-static const char *screengrab[] = {"~/.local/bin/screengrab", NULL};
-static const char *screengrab_edit[] = {"~/.local/bin/screengrab-edit", NULL};
-static const char *screengrab_select_edit[] = {"~/.local/bin/screengrab-select-edit", NULL};
+static const char *screenshot_select[] = {"~/.local/bin/screenshot", "--select", NULL};
+static const char *screenshot_paste[] = {"~/.local/bin/screenshot", "--paste", NULL};
+static const char *screenshot_full[] = {"~/.local/bin/screenshot", "--full", NULL};
+static const char *screenshot_edit[] = {"~/.local/bin/screenshot", "--edit", NULL};
+static const char *screenshot_select_edit[] = {"~/.local/bin/screenshot", "--select", "--edit", NULL};
 static const char *screenlock[] = {"~/.local/bin/lock-screen", NULL};
 
 static const char *bookmarks[] = {"~/.local/bin/bookmarks", "NULL"};
@@ -237,16 +235,16 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_j,      pushdown,       {0} },
     {MODKEY | ShiftMask, XK_k,      pushup,         {0} },
 
-    {ControlMask, XK_Print, spawn, {.v = screengrab_select}},
-    {ControlMask | ShiftMask, XK_p, spawn, {.v = screengrab_select}},
-    {ControlMask | ShiftMask, XK_o, spawn, {.v = screengrab_paste}},
-    {ControlMask | ShiftMask, XK_Print, spawn, {.v = screengrab_select_edit}},
-    {ShiftMask, XK_Print, spawn, {.v = screengrab_edit}},
-
-    {0, XK_Print, spawn, {.v = screengrab}},
-
     {ControlMask | ShiftMask, XK_Home, spawn, {.v = snippits}},
+    {ControlMask, XK_Print, spawn, {.v = screenshot_select}},
+    {ControlMask | ShiftMask, XK_p, spawn, {.v = screenshot_select}},
+    {ControlMask | ShiftMask, XK_o, spawn, {.v = screenshot_paste}},
+    
+    /* Screenshot with editing */
+    {ShiftMask, XK_Print, spawn, {.v = screenshot_edit}},
+    {ControlMask | ShiftMask, XK_Print, spawn, {.v = screenshot_select_edit}},
 
+    {0, XK_Print, spawn, {.v = screenshot_full}},
     // {MODKEY, XK_backslash, spawn, {.v = gptclip}},
 };
 
