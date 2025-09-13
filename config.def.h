@@ -118,8 +118,8 @@ static const char *termcmd[] = {"st", "-e", "/bin/zsh", NULL};
 /* Audio/Video Controls */
 static const char *brightness_up[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "up", NULL};
 static const char *brightness_down[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "down", NULL};
-static const char *brightness_min[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "min", NULL};
-static const char *brightness_max[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "max", NULL};
+static const char *brightness_min[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/min-brightness", NULL};
+static const char *brightness_max[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/max-brightness", NULL};
 static const char *volume_up[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-i", "5", NULL};
 static const char *volume_down[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-d", "5", NULL};
 static const char *volume_mute[] = {"~/.local/bin/dwm-bar-restart", "pamixer", "-t", NULL};
@@ -161,6 +161,8 @@ static const char *surfer[] = {"~/.local/bin/surfer", "-m",  dmenumon,  "-fn", d
 
 
 static const char *dmenu_clipboard_llm_query[] = {"~/.local/bin/dmenu-clipboard-llm-query.sh", NULL};
+static const char calcscratchpadname[] = "calcscratchpad";
+static const char *calccmd[] = {"st", "-t", calcscratchpadname, "-g", "120x34", "-e", "/bin/sh", "-c", "calc", NULL};
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -196,6 +198,7 @@ static Key keys[] = {
     {MODKEY, XK_o, setlayout, {.v = &layouts[4]}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_q, spawn, {.v = dmenu_clipboard_llm_query}},
+    {MODKEY, XK_r, togglecalcscratch, {.v = calccmd}},
 
     {MODKEY, XK_s, togglesticky, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
