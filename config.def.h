@@ -153,7 +153,7 @@ static const char *snippits[] = {"st",
 static const char *gptclip[] = {"st",          "-c", "floating", "-g",
                                 "90x25+500+1", "-e", "gptclip",  NULL};
 static const char *gptmenu[] = {"~/.local/bin/gptmenu", NULL};
-static const char *notesedit[] = {"st", "-e", "nvim", "~/notes/NOTES", NULL};
+static const char *notesedit[] = {"st", "-c", "floating", "-e", "nvim", "~/notes/NOTES", NULL};
 static const char *themeswitch[] = {"~/.config/dwm-themes/scripts/dwm-theme-switch", NULL};
 
 static const char *surfersearch[] = {"~/.local/bin/surfer-search", "-m",  dmenumon,  "-fn", dmenufont, "-nb", normal_bg, "-nf", normal_fg,   "-sb", select_bg, "-sf", select_fg, NULL};
