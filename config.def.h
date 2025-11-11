@@ -114,7 +114,7 @@ static const char *passmenucmd[] = {
     "/usr/bin/passmenu", "-m",  dmenumon,  "-fn", dmenufont, "-nb", normal_bg, "-nf",
     normal_fg,   "-sb", select_bg, "-sf", select_fg, NULL};
 
-static const char *termcmd[] = {"st", "-e", "/bin/zsh", NULL};
+static const char *termcmd[] = {"st", "-e", "/bin/bash", NULL};
 /* Audio/Video Controls */
 static const char *brightness_up[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "up", NULL};
 static const char *brightness_down[] = {"~/.local/bin/dwm-bar-restart", "~/.local/bin/brightness", "down", NULL};
@@ -130,6 +130,7 @@ static const char *slackcmd[] = {"/usr/bin/slack", "--disable-gpu", NULL};
 static const char *pulsemixercmd[] = {"st", "-c", "Pulse Mixer", "pulsemixer",
                                       NULL};
 static const char *openwebuicmd[] = {"browser", "--app=http://openwebui:8080/", NULL};
+static const char *homepagecmd[] = {"~/.local/bin/browser", "--app=https://homepage.magnetic.sh", NULL};
 static const char *screengrab_select[] = {"~/.local/bin/screengrab-select",
                                           NULL};
 static const char *screengrab_paste[] = {
@@ -237,6 +238,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY | ShiftMask, XK_Delete, spawn, {.v = homepagecmd}},
     {MODKEY | ShiftMask, XK_j,      pushdown,       {0} },
     {MODKEY | ShiftMask, XK_k,      pushup,         {0} },
 
